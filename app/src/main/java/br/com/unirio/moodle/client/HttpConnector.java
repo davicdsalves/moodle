@@ -1,7 +1,5 @@
 package br.com.unirio.moodle.client;
 
-import android.util.Log;
-
 import org.apache.http.NameValuePair;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -11,13 +9,15 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.http.converter.FormHttpMessageConverter;
-import org.springframework.http.converter.json.GsonHttpMessageConverter;
+import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
 import java.util.List;
+
+import br.com.unirio.moodle.util.Logger;
 
 /**
  * Created by davi.alves on 17/04/2014.
@@ -44,7 +44,7 @@ public class HttpConnector<T> {
         this.template = new RestTemplate();
         this.template.setRequestFactory(new HttpComponentsClientHttpRequestFactory());
         this.generic = generic;
-        this.template.getMessageConverters().add(new GsonHttpMessageConverter());
+        this.template.getMessageConverters().add(new StringHttpMessageConverter());
         this.headers = new HttpHeaders();
     }
 
@@ -157,7 +157,7 @@ public class HttpConnector<T> {
                 return response.getBody();
             }
         } catch (Exception e) {
-            Log.e(getClass().toString(), String.format("Error %s request, status: %s", method.toString(), status), e);
+            Logger.e("Error %s request, status: %s", e, method.toString(), status);
         }
         return null;
     }
