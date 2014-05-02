@@ -21,8 +21,8 @@ public class MoodleClient {
 
     public void authenticate(String email, String password) {
         String[] pathParams = {Constants.LOGIN_PARAM, Constants.INDEX_NAME};
-        String[] formKeys = {Constants.USERNAME_NAME, Constants.PASSWORD_NAME};
-        String[] formValues = {email, password};
+        String[] formKeys = {Constants.USERNAME_NAME, Constants.PASSWORD_NAME, Constants.TEST_COOKIES};
+        String[] formValues = {email, password, String.valueOf(1)};
 
         HttpConnector<String> connector = new HttpConnector<String>(String.class);
         MultiValueMap<String, Object> body = createMultiValueMap(formKeys, formValues);
@@ -33,9 +33,9 @@ public class MoodleClient {
     }
 
     /**
-     * @param keys
-     * @param values
-     * @return
+     * @param keys chaves
+     * @param values valores
+     * @return lista de nameValuePair
      */
     private List<NameValuePair> createValuePairs(String[] keys, String[] values) {
         List<NameValuePair> list = new ArrayList<NameValuePair>();
@@ -48,9 +48,9 @@ public class MoodleClient {
     }
 
     /**
-     * @param keys
-     * @param values
-     * @return
+     * @param keys chaves
+     * @param values valores
+     * @return mapa com chave e valor
      */
     private MultiValueMap<String, Object> createMultiValueMap(String[] keys, Object[] values) {
         int capacity = (keys != null ? keys.length : 0);

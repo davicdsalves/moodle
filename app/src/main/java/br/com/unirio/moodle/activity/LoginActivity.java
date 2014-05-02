@@ -3,6 +3,7 @@ package br.com.unirio.moodle.activity;
 import android.app.Activity;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.Editable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,13 +17,13 @@ import butterknife.OnClick;
 public class LoginActivity extends Activity {
 
     @InjectView(R.id.editTextEmail)
-    private EditText mEditTextEmail;
+    public EditText mEditTextEmail;
 
     @InjectView(R.id.editTextPassword)
-    private EditText mEditTextPassword;
+    public EditText mEditTextPassword;
 
     @InjectView(R.id.buttonLogin)
-    private Button mButtonLogin;
+    public Button mButtonLogin;
 
     private String mEmail;
     private String mPassword;
@@ -37,7 +38,13 @@ public class LoginActivity extends Activity {
 
     @OnClick(R.id.buttonLogin)
     public void onLoginClick() {
-        new AuthenticateTask().execute();
+        Editable emailEditable = mEditTextEmail.getEditableText();
+        Editable passwordEditable = mEditTextPassword.getEditableText();
+        if (emailEditable != null && passwordEditable != null) {
+            mEmail = emailEditable.toString();
+            mPassword = passwordEditable.toString();
+            new AuthenticateTask().execute();
+        }
     }
 
     private class AuthenticateTask extends AsyncTask<Void, Void, Void> {
