@@ -4,10 +4,12 @@ import android.app.Activity;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Editable;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import javax.inject.Inject;
+
+import br.com.unirio.moodle.MoodleApplication;
 import br.com.unirio.moodle.R;
 import br.com.unirio.moodle.client.MoodleClient;
 import butterknife.ButterKnife;
@@ -25,6 +27,9 @@ public class LoginActivity extends Activity {
     @InjectView(R.id.buttonLogin)
     public Button mButtonLogin;
 
+    @Inject
+    public MoodleClient moodleClient;
+
     private String mEmail;
     private String mPassword;
 
@@ -34,6 +39,8 @@ public class LoginActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.inject(this);
+        MoodleApplication app = (MoodleApplication) getApplication();
+        app.getObjectGraph().inject(this);
     }
 
     @OnClick(R.id.buttonLogin)
@@ -51,8 +58,7 @@ public class LoginActivity extends Activity {
 
         @Override
         protected Void doInBackground(Void... voids) {
-            MoodleClient client = new MoodleClient();
-            client.authenticate(mEmail, mPassword);
+            moodleClient.authenticate(mEmail, mPassword);
             return null;
         }
     }

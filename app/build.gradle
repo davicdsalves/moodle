@@ -2,7 +2,7 @@ apply plugin: 'android'
 
 android {
     compileSdkVersion 19
-    buildToolsVersion "19.0.1"
+    buildToolsVersion '19.0.1'
 
     defaultConfig {
         minSdkVersion 8
@@ -33,6 +33,8 @@ android {
 }
 
 dependencies {
+    compile 'com.squareup.dagger:dagger:1.2.1'
+    compile 'com.squareup.dagger:dagger-compiler:1.2.1'
     compile 'com.jakewharton:butterknife:5.0.0'
     compile 'com.android.support:appcompat-v7:19.+'
     compile 'org.springframework.android:spring-android-rest-template:1.0.1.RELEASE'
