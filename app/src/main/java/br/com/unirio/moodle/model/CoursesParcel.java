@@ -40,11 +40,11 @@ public class CoursesParcel implements Parcelable {
     public static final Creator<CoursesParcel> CREATOR = new Creator<CoursesParcel>() {
         @Override
         public CoursesParcel createFromParcel(Parcel parcel) {
-            CoursesParcel convInfoParcel = new CoursesParcel();
+            CoursesParcel courseParcel = new CoursesParcel();
             List<Course> infoRows = new ArrayList<Course>();
             parcel.readList(infoRows, null);
-            convInfoParcel.rows = infoRows;
-            return convInfoParcel;
+            courseParcel.rows = infoRows;
+            return courseParcel;
         }
 
         @Override

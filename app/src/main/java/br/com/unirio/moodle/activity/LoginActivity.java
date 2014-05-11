@@ -47,7 +47,7 @@ public class LoginActivity extends Activity {
     @Inject
     public HtmlCleaner cleaner;
 
-    private String mEmail;
+    private String mUsername;
     private String mPassword;
 
     private ProgressDialog progressDialog;
@@ -74,7 +74,7 @@ public class LoginActivity extends Activity {
         Editable emailEditable = mEditTextUsername.getEditableText();
         Editable passwordEditable = mEditTextPassword.getEditableText();
         if (emailEditable != null && passwordEditable != null) {
-            mEmail = emailEditable.toString();
+            mUsername = emailEditable.toString();
             mPassword = passwordEditable.toString();
             task = new AuthenticateTask();
             task.execute();
@@ -102,11 +102,11 @@ public class LoginActivity extends Activity {
         protected LoginResponse doInBackground(Void... voids) {
             try {
                 service.accessPage();
-                Response response = service.login(mEmail, mPassword);
+                Response response = service.login(mUsername, mPassword);
                 String url = response.getUrl();
-                Logger.i("Request sent, email[%s], pass[%s], status[%d], url[%s]", mEmail, mPassword, response.getStatus(), url);
+                Logger.i("Request sent, email[%s], pass[%s], status[%d], url[%s]", mUsername, mPassword, response.getStatus(), url);
                 if (isRedirectToHome(url)) {
-                    sessionService.insertLogin(mEmail);
+                    sessionService.insertLogin(mUsername);
                     List<Course> courses = (processResponse(response));
                     return new LoginResponse(true, courses);
                 }
