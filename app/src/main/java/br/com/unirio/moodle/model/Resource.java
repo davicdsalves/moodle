@@ -5,6 +5,7 @@ package br.com.unirio.moodle.model;
  */
 public class Resource {
 
+
     private String name;
 
     public Resource() {

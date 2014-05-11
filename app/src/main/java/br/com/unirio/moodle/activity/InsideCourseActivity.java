@@ -36,6 +36,35 @@ public class InsideCourseActivity extends ActionBarActivity {
         resources = new ArrayList<Resources>();
     }
 
+        /* private List<Resource> processResponse(Response response) throws IOException, XPatherException {
+
+            tagNode = cleaner.clean(response.getBody().in());
+            Object[] resources_nodes = tagNode.evaluateXPath(Constants.RESOURCE_URL_XPATH);
+
+            if (courses_nodes.length > 0) {
+                TagNode tagNode = (TagNode) courses_nodes[0];
+                List<TagNode> childs = tagNode.getChildTagList();
+                List<Course> courses = new ArrayList<Course>(childs.size());
+                for (TagNode child : childs) {
+                    Object[] courseNameNode = child.evaluateXPath(Constants.COURSE_NAME_XPATH);
+                    Object[] teacherNameNode = child.evaluateXPath(Constants.TEACHER_NAME_XPATH);
+                    Object[] courseUrlNode = child.evaluateXPath(Constants.COURSE_URL_XPATH);
+                    if (courseNameNode.length > 0 && teacherNameNode.length > 0) {
+                        StringBuilder builderCourse = (StringBuilder) courseNameNode[0];
+                        StringBuilder builderTeacher = (StringBuilder) teacherNameNode[0];
+                        String courseUrl = (String) courseUrlNode[0];
+                        String courseName = builderCourse.toString();
+                        String teacherName = builderTeacher.toString();
+                        Course course = new Course(courseName, teacherName, courseUrl);
+                        courses.add(course);
+                        Logger.d("courseName[%s], teacherName[%s], url[%s]", courseName, teacherName, courseUrl);
+                    }
+                }
+                return courses;
+            }
+            return new ArrayList<Course>(0);
+        } */
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.inside_course, menu);
@@ -50,5 +79,4 @@ public class InsideCourseActivity extends ActionBarActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
 }
