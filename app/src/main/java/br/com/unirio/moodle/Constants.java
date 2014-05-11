@@ -34,4 +34,7 @@ public class Constants {
 
     public static final String COURSE_URL_XPATH = "//*[@class='teachers']/li[1]/a/@href/text()[1]";
     //*[@id="middle-column"]/div/ul/li[1]/div/div[1]/div/a
+
+    public static final String RESOURCE_URL_XPATH = "//*[@class='activity resource']/li[1]/a/   //*[@class='teachers']/li[1]/a/@href/text()[1]";  // //activity resource
+
 }

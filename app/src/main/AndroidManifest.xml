@@ -23,6 +23,10 @@
             android:name="br.com.unirio.moodle.activity.CourseListActivity"
             android:label="@string/title_activity_course_list" >
         </activity>
+        <activity
+            android:name="br.com.unirio.moodle.activity.InsideCourseActivity"
+            android:label="@string/title_activity_inside_course" >
+        </activity>
     </application>
 
     <!-- To auto-complete the email text field in the login form with the user's emails -->
