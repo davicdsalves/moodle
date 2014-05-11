@@ -2,10 +2,12 @@ package br.com.unirio.moodle.util;
 
 import android.util.Log;
 
+import retrofit.RestAdapter;
+
 /**
  * Created by davi.alves on 17/04/2014.
  */
-public class Logger {
+public class Logger implements RestAdapter.Log{
 
     private static final String TAG = "MOODLE_UNIRIO";
 
@@ -82,5 +84,10 @@ public class Logger {
     public static void e(String msg, Throwable e, Object... args)
     {
         Log.e(TAG, String.format(msg, args), e);
+    }
+
+    @Override
+    public void log(String message) {
+        d(message);
     }
 }
