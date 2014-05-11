@@ -3,7 +3,7 @@
 
     <string name="app_name">Moodle</string>
     <string name="hello_world">Hello world!</string>
-    <string name="hint_email">Enter your email</string>
+    <string name="hint_username">Enter your username</string>
     <string name="hint_password">Enter your password</string>
     <string name="unirio_logo_desc">Unirio Logo</string>
     <string name="login">Login</string>

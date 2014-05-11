@@ -26,6 +26,7 @@ import br.com.unirio.moodle.client.MoodleService;
 import br.com.unirio.moodle.model.Course;
 import br.com.unirio.moodle.model.CoursesParcel;
 import br.com.unirio.moodle.model.LoginResponse;
+import br.com.unirio.moodle.service.SessionService;
 import br.com.unirio.moodle.util.Logger;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -34,8 +35,8 @@ import retrofit.client.Response;
 
 public class LoginActivity extends Activity {
 
-    @InjectView(R.id.editTextEmail)
-    public EditText mEditTextEmail;
+    @InjectView(R.id.editTextUsername)
+    public EditText mEditTextUsername;
 
     @InjectView(R.id.editTextPassword)
     public EditText mEditTextPassword;
@@ -53,6 +54,8 @@ public class LoginActivity extends Activity {
 
     private AuthenticateTask task;
 
+    private SessionService sessionService;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,11 +64,14 @@ public class LoginActivity extends Activity {
         ButterKnife.inject(this);
         MoodleApplication app = (MoodleApplication) getApplication();
         app.getObjectGraph().inject(this);
+
+        sessionService = new SessionService(this);
+        mEditTextUsername.setText(sessionService.getKeyUserName());
     }
 
     @OnClick(R.id.buttonLogin)
     public void onLoginClick() {
-        Editable emailEditable = mEditTextEmail.getEditableText();
+        Editable emailEditable = mEditTextUsername.getEditableText();
         Editable passwordEditable = mEditTextPassword.getEditableText();
         if (emailEditable != null && passwordEditable != null) {
             mEmail = emailEditable.toString();
@@ -100,6 +106,7 @@ public class LoginActivity extends Activity {
                 String url = response.getUrl();
                 Logger.i("Request sent, email[%s], pass[%s], status[%d], url[%s]", mEmail, mPassword, response.getStatus(), url);
                 if (isRedirectToHome(url)) {
+                    sessionService.insertLogin(mEmail);
                     List<Course> courses = (processResponse(response));
                     return new LoginResponse(true, courses);
                 }
@@ -147,6 +154,7 @@ public class LoginActivity extends Activity {
                 Intent intent = new Intent(LoginActivity.this, CourseListActivity.class);
                 intent.putExtra(Constants.COURSES_KEY, parcel);
                 startActivity(intent);
+                finish();
             }
         }
 

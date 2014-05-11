@@ -5,6 +5,8 @@ package br.com.unirio.moodle;
  */
 public class Constants {
 
+    public static final String EMPTY = "";
+
     public static final String LOGIN_PARAM = "login";
     public static final String INDEX_NAME = "index.php";
 
