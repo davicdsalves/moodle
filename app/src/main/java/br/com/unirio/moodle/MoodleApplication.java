@@ -2,7 +2,8 @@ package br.com.unirio.moodle;
 
 import android.app.Application;
 
-import br.com.unirio.moodle.module.MoodleClientModule;
+import br.com.unirio.moodle.module.MoodleServiceModule;
+import br.com.unirio.moodle.module.RestAdapterModule;
 import dagger.ObjectGraph;
 
 /**
@@ -12,14 +13,23 @@ public class MoodleApplication extends Application {
 
     private ObjectGraph objectGraph;
 
+    private static MoodleApplication instance;
+
+    public MoodleApplication() {
+        instance = this;
+    }
+
     @Override
     public void onCreate() {
         super.onCreate();
-        objectGraph = ObjectGraph.create(new MoodleClientModule());
+        objectGraph = ObjectGraph.create(new RestAdapterModule(), new MoodleServiceModule());
     }
 
     public ObjectGraph getObjectGraph() {
         return objectGraph;
     }
 
+    public static MoodleApplication getInstance() {
+        return instance;
+    }
 }

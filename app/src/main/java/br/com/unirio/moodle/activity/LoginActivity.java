@@ -11,10 +11,12 @@ import javax.inject.Inject;
 
 import br.com.unirio.moodle.MoodleApplication;
 import br.com.unirio.moodle.R;
-import br.com.unirio.moodle.client.MoodleClient;
+import br.com.unirio.moodle.client.MoodleService;
+import br.com.unirio.moodle.util.Logger;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
+import retrofit.client.Response;
 
 public class LoginActivity extends Activity {
 
@@ -28,7 +30,7 @@ public class LoginActivity extends Activity {
     public Button mButtonLogin;
 
     @Inject
-    public MoodleClient moodleClient;
+    public MoodleService service;
 
     private String mEmail;
     private String mPassword;
@@ -58,7 +60,10 @@ public class LoginActivity extends Activity {
 
         @Override
         protected Void doInBackground(Void... voids) {
-            moodleClient.authenticate(mEmail, mPassword);
+            service.accessPage();
+            Response a = service.login(mEmail, mPassword);
+
+            Logger.i("Request sent, email[%s], pass[%s], status[%d]", mEmail, mPassword, a.getStatus());
             return null;
         }
     }
