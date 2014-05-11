@@ -49,7 +49,7 @@ public class CourseListActivity extends ActionBarActivity {
     @OnItemClick(R.id.listViewCourses)
     public void viewCourse(int position) {
         Course course = adapter.getItem(position);
-        Intent intent = new Intent(CourseListActivity.this, LoginActivity.class);
+        Intent intent = new Intent(CourseListActivity.this, InsideCourseActivity.class);
         intent.putExtra(Constants.COURSE_NAME_KEY, course.getName());
         intent.putExtra(Constants.COURSE_URL_KEY, course.getUrl());
         startActivity(intent);

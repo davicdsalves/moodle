@@ -90,8 +90,6 @@ public class LoginActivity extends Activity {
 
     private class AuthenticateTask extends AsyncTask<Void, Void, LoginResponse> {
 
-        private TagNode tagNode;
-
         @Override
         protected void onPreExecute() {
             progressDialog = ProgressDialog.show(LoginActivity.this, getString(R.string.sending_data), getString(R.string.please_wait), true);
@@ -117,11 +115,11 @@ public class LoginActivity extends Activity {
         }
 
         private List<Course> processResponse(Response response) throws IOException, XPatherException {
-            tagNode = cleaner.clean(response.getBody().in());
+            TagNode tagNode = cleaner.clean(response.getBody().in());
             Object[] courses_nodes = tagNode.evaluateXPath(Constants.COURSES_XPATH);
             if (courses_nodes.length > 0) {
-                TagNode tagNode = (TagNode) courses_nodes[0];
-                List<TagNode> childs = tagNode.getChildTagList();
+                TagNode coursesNode = (TagNode) courses_nodes[0];
+                List<TagNode> childs = coursesNode.getChildTagList();
                 List<Course> courses = new ArrayList<Course>(childs.size());
                 for (TagNode child : childs) {
                     Object[] courseNameNode = child.evaluateXPath(Constants.COURSE_NAME_XPATH);
