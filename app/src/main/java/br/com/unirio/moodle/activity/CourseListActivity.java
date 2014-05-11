@@ -1,7 +1,9 @@
 package br.com.unirio.moodle.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListAdapter;
@@ -17,13 +19,14 @@ import br.com.unirio.moodle.model.Course;
 import br.com.unirio.moodle.model.CoursesParcel;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import butterknife.OnItemClick;
 
 public class CourseListActivity extends ActionBarActivity {
 
     @InjectView(R.id.listViewCourses)
     public ListView mListView;
 
-    private ListAdapter adapter;
+    private CoursesAdapter adapter;
 
     private List<Course> courses;
 
@@ -41,6 +44,15 @@ public class CourseListActivity extends ActionBarActivity {
         }
         adapter = new CoursesAdapter(CourseListActivity.this, courses);
         mListView.setAdapter(adapter);
+    }
+
+    @OnItemClick(R.id.listViewCourses)
+    public void viewCourse(int position) {
+        Course course = adapter.getItem(position);
+        Intent intent = new Intent(CourseListActivity.this, LoginActivity.class);
+        intent.putExtra(Constants.COURSE_NAME_KEY, course.getName());
+        intent.putExtra(Constants.COURSE_URL_KEY, course.getUrl());
+        startActivity(intent);
     }
 
 

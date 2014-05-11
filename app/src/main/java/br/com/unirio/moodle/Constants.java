@@ -7,13 +7,20 @@ public class Constants {
 
     public static final String EMPTY = "";
 
+    public static final String DIVISOR = "/";
+
     public static final String LOGIN_PARAM = "login";
     public static final String INDEX_NAME = "index.php";
-
     public static final String EMAIL_NAME = "username";
     public static final String PASSWORD_NAME = "password";
 
+    public static final String USER_PARAM = "user";
+    public static final String VIEW_NAME = "view.php";
+    public static final String ID_NAME = "username";
+
     public static final String COURSES_KEY = "courses";
+    public static final String COURSE_NAME_KEY = "courseName";
+    public static final String COURSE_URL_KEY = "courseUrl";
 
     public static final String API_URL = "http://uniriodb2.uniriotec.br/";
 
