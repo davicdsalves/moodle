@@ -1,5 +1,8 @@
 package br.com.unirio.moodle.module;
 
+import org.htmlcleaner.CleanerProperties;
+import org.htmlcleaner.HtmlCleaner;
+
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
@@ -25,5 +28,16 @@ public class MoodleServiceModule {
         MoodleApplication app = MoodleApplication.getInstance();
         app.getObjectGraph().inject(this);
         return restAdapter.create(MoodleService.class);
+    }
+
+    @Provides
+    public HtmlCleaner provideHtmlCleaner() {
+        HtmlCleaner cleaner = new HtmlCleaner();
+        CleanerProperties props = cleaner.getProperties();
+        props.setAllowHtmlInsideAttributes(true);
+        props.setAllowMultiWordAttributes(true);
+        props.setRecognizeUnicodeChars(true);
+        props.setOmitComments(true);
+        return cleaner;
     }
 }

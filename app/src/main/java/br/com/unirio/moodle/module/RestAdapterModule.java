@@ -10,7 +10,7 @@ import retrofit.RestAdapter;
 /**
  * Created by davi.alves on 10/05/2014.
  */
-@Module(injects = {MoodleServiceModule.class})
+@Module(injects = MoodleServiceModule.class)
 public class RestAdapterModule {
 
     @Provides

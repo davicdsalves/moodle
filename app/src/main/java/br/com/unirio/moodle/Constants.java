@@ -11,9 +11,18 @@ public class Constants {
     public static final String EMAIL_NAME = "username";
     public static final String PASSWORD_NAME = "password";
 
-    public static final String TEST = "Cookie: MOODLEID1_uniriodb2=5%253B%251E%25A7%25A7gn%25B0%2500%25F7%25FD; MoodleSessionuniriodb2=tgetm52hjbnm8d4trp2ebv2qcfr7kb4g56natf9neoddh7gukp81; MoodleSessionTestuniriodb2=KiSsqtdJtz";
+    public static final String COURSES_KEY = "courses";
 
-    public static final String TEST_COOKIES = "testcookies";
+    public static final String API_URL = "http://uniriodb2.uniriotec.br/";
 
-    public static final String API_URL = "http://uniriodb2.uniriotec.br";
+    public static final String LOGIN_URL = "http://uniriodb2.uniriotec.br/" + LOGIN_PARAM + "/" + INDEX_NAME;
+
+    public static final String COURSES_XPATH = "//*[@id='middle-column']/div/ul";
+
+    public static final String COURSE_NAME_XPATH = "//*[@class='name']/a/text()[1]";
+
+    public static final String TEACHER_NAME_XPATH = "//*[@class='teachers']/li[1]/a/text()[1]";
+
+    public static final String COURSE_URL_XPATH = "//*[@class='teachers']/li[1]/a/@href/text()[1]";
+    //*[@id="middle-column"]/div/ul/li[1]/div/div[1]/div/a
 }

@@ -29,10 +29,7 @@ dependencies {
     compile 'com.android.support:appcompat-v7:19.+'
     compile 'com.squareup.retrofit:retrofit:1.5.1'
     compile 'com.squareup.okhttp:okhttp:1.5.4'
-    compile('org.simpleframework:simple-xml:2.7.1') {
-        exclude group: 'stax', module: 'stax-api'
-        exclude group: 'xpp3', module: 'xpp3'
-    }
+    compile 'net.sourceforge.htmlcleaner:htmlcleaner:2.8'
     compile fileTree(dir: 'libs', include: ['*.jar'])
 }
 
