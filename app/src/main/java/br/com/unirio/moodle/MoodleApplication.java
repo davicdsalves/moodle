@@ -2,6 +2,7 @@ package br.com.unirio.moodle;
 
 import android.app.Application;
 
+import br.com.unirio.moodle.module.CookieModule;
 import br.com.unirio.moodle.module.MoodleServiceModule;
 import br.com.unirio.moodle.module.RestAdapterModule;
 import dagger.ObjectGraph;
@@ -15,6 +16,7 @@ public class MoodleApplication extends Application {
 
     private static MoodleApplication instance;
 
+
     public MoodleApplication() {
         instance = this;
     }
@@ -22,7 +24,7 @@ public class MoodleApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        objectGraph = ObjectGraph.create(new RestAdapterModule(), new MoodleServiceModule());
+        objectGraph = ObjectGraph.create(new RestAdapterModule(), new MoodleServiceModule(), new CookieModule());
     }
 
     public ObjectGraph getObjectGraph() {

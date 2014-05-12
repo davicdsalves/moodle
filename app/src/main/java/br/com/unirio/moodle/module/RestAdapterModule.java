@@ -6,9 +6,11 @@ import java.net.CookieHandler;
 import java.net.CookieManager;
 import java.net.CookiePolicy;
 
+import javax.inject.Inject;
 import javax.inject.Singleton;
 
 import br.com.unirio.moodle.Constants;
+import br.com.unirio.moodle.MoodleApplication;
 import br.com.unirio.moodle.util.Logger;
 import dagger.Module;
 import dagger.Provides;
@@ -21,11 +23,16 @@ import retrofit.client.OkClient;
 @Module(injects = MoodleServiceModule.class)
 public class RestAdapterModule {
 
+    @Inject
+    public CookieManager cookieManager;
+
     @Provides
     @Singleton
     public RestAdapter provideRestAdapter() {
+        MoodleApplication app = MoodleApplication.getInstance();
+        app.getObjectGraph().inject(this);
+
         OkHttpClient httpClient = new OkHttpClient();
-        CookieManager cookieManager = new CookieManager();
         cookieManager.setCookiePolicy(CookiePolicy.ACCEPT_ALL);
         CookieHandler.setDefault(cookieManager);
         return new RestAdapter.Builder()

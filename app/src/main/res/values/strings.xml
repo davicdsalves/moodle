@@ -9,9 +9,10 @@
     <string name="login">Login</string>
     <string name="error_login">Erro ao logar, tente novamente.</string>
     <string name="title_activity_course_list">Matérias</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_logout">Logout</string>
     <string name="sending_data">Enviando dados…</string>
     <string name="loading_data">Carregando dados do curso…</string>
+    <string name="downloading_file">Baixando arquivo…</string>
     <string name="please_wait">Por favor aguarde</string>
     <string name="course_name">Course Name</string>
     <string name="teacher_name">Teacher Name</string>

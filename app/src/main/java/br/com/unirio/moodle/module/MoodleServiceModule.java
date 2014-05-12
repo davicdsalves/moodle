@@ -3,6 +3,9 @@ package br.com.unirio.moodle.module;
 import org.htmlcleaner.CleanerProperties;
 import org.htmlcleaner.HtmlCleaner;
 
+import java.net.CookieManager;
+import java.net.CookiePolicy;
+
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
@@ -17,7 +20,7 @@ import retrofit.RestAdapter;
 /**
  * Created by davi.alves on 10/05/2014.
  */
-@Module(injects = {LoginActivity.class, InsideCourseActivity.class})
+@Module(injects = {LoginActivity.class, InsideCourseActivity.class}, includes = CookieModule.class)
 public class MoodleServiceModule {
 
     @Inject

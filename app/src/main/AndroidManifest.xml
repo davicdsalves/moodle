@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="br.com.unirio.moodle" >
+    package="br.com.unirio.moodle">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:name="br.com.unirio.moodle.MoodleApplication"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme">
         <activity
             android:name="br.com.unirio.moodle.activity.LoginActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -21,17 +22,15 @@
         </activity>
         <activity
             android:name="br.com.unirio.moodle.activity.CourseListActivity"
-            android:label="@string/title_activity_course_list" >
-        </activity>
+            android:label="@string/title_activity_course_list"/>
         <activity
             android:name="br.com.unirio.moodle.activity.InsideCourseActivity"
-            android:label="@string/title_activity_inside_course" >
+            android:label="@string/title_activity_inside_course"
+            >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.CourseListActivity" />
         </activity>
     </application>
-
-    <!-- To auto-complete the email text field in the login form with the user's emails -->
-    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
-    <uses-permission android:name="android.permission.READ_PROFILE" />
-    <uses-permission android:name="android.permission.READ_CONTACTS" />
 
 </manifest>

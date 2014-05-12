@@ -5,7 +5,7 @@ android {
     buildToolsVersion '19.0.3'
 
     defaultConfig {
-        minSdkVersion 10
+        minSdkVersion 11
         targetSdkVersion 19
         versionCode 1
         versionName "1.0"
@@ -30,6 +30,7 @@ dependencies {
     compile 'com.squareup.retrofit:retrofit:1.5.1'
     compile 'com.squareup.okhttp:okhttp:1.5.4'
     compile 'net.sourceforge.htmlcleaner:htmlcleaner:2.8'
+    compile 'com.google.guava:guava:17.0'
     compile fileTree(dir: 'libs', include: ['*.jar'])
 }
 

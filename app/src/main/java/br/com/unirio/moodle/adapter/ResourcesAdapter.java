@@ -39,14 +39,15 @@ public class ResourcesAdapter extends ListAdapter<Resource> {
         }
 
         holder.resourceName.setText(resourceRow.getName());
-        holder.resourceType.setText(resourceRow.getType().toString());
+        holder.resourceType.setText(resourceRow.getType());
+
         return view;
     }
 
     static class ViewHolder {
         @InjectView(R.id.textViewResourceName)
         TextView resourceName;
-        @InjectView(R.id.textViewResourceName)
+        @InjectView(R.id.textViewResourceType)
         TextView resourceType;
 
         public ViewHolder(View view) {

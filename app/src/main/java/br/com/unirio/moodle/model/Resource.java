@@ -9,21 +9,12 @@ public class Resource {
 
     private String url;
 
-    private FileType type;
+    private String type;
 
     public Resource() {
     }
 
-    public Resource(String name) {
-        this.name = name;
-    }
-
-    public Resource(String name, String url) {
-        this.name = name;
-        this.url = url;
-    }
-
-    public Resource(String name, String url, FileType type) {
+    public Resource(String name, String url, String type) {
         this.name = name;
         this.url = url;
         this.type = type;
@@ -45,11 +36,11 @@ public class Resource {
         this.url = url;
     }
 
-    public FileType getType() {
+    public String getType() {
         return type;
     }
 
-    public void setType(FileType type) {
+    public void setType(String type) {
         this.type = type;
     }
 }
