@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 
 import br.com.unirio.moodle.MoodleApplication;
+import br.com.unirio.moodle.activity.InsideCourseActivity;
 import br.com.unirio.moodle.activity.LoginActivity;
 import br.com.unirio.moodle.client.MoodleService;
 import dagger.Module;
@@ -16,7 +17,7 @@ import retrofit.RestAdapter;
 /**
  * Created by davi.alves on 10/05/2014.
  */
-@Module(injects = {LoginActivity.class})
+@Module(injects = {LoginActivity.class, InsideCourseActivity.class})
 public class MoodleServiceModule {
 
     @Inject
