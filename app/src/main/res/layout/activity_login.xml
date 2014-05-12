@@ -1,50 +1,57 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@android:color/white"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fillViewport="true"
     tools:context="${packageName}.${activityClass}">
 
-    <ImageView
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/imageViewUnirioLogo"
-        android:contentDescription="@string/unirio_logo_desc"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:src="@drawable/unirio"
-        android:layout_marginTop="15dp" />
+        android:background="@android:color/white"
+        android:gravity="top">
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textEmailAddress"
-        android:ems="10"
-        android:id="@+id/editTextUsername"
-        android:layout_below="@+id/imageViewUnirioLogo"
-        android:hint="@string/hint_username"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="29dp" />
+        <ImageView
+            android:id="@+id/imageViewUnirioLogo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            android:contentDescription="@string/unirio_logo_desc"
+            android:src="@drawable/unirio" />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPassword"
-        android:ems="10"
-        android:id="@+id/editTextPassword"
-        android:layout_below="@+id/editTextUsername"
-        android:layout_centerHorizontal="true"
-        android:hint="@string/hint_password"
-        android:layout_marginTop="10dp" />
+        <EditText
+            android:id="@+id/editTextUsername"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/imageViewUnirioLogo"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="29dp"
+            android:ems="10"
+            android:hint="@string/hint_username"
+            android:inputType="textEmailAddress" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/login"
-        android:id="@+id/buttonLogin"
-        android:layout_below="@+id/editTextPassword"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:paddingLeft="15dp"
-        android:paddingRight="15dp" />
-</RelativeLayout>
+        <EditText
+            android:id="@+id/editTextPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editTextUsername"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:ems="10"
+            android:hint="@string/hint_password"
+            android:inputType="textPassword" />
+
+        <Button
+            android:id="@+id/buttonLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editTextPassword"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:text="@string/login" />
+    </RelativeLayout>
+</ScrollView>

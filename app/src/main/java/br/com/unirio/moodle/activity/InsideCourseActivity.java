@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
-import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -104,7 +103,7 @@ public class InsideCourseActivity extends ActionBarActivity {
         int id = item.getItemId();
         switch (id) {
             case android.R.id.home:
-                NavUtils.navigateUpFromSameTask(this);
+                finish();
                 return true;
             case R.id.action_logout:
                 Intent i = new Intent(this, LoginActivity.class);
