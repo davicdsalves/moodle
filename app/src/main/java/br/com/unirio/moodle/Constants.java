@@ -33,8 +33,12 @@ public class Constants {
     public static final String TEACHER_NAME_XPATH = "//*[@class='teachers']/li[1]/a/text()[1]";
 
     public static final String COURSE_URL_XPATH = "//*[@class='name']/a/@href/text()[1]";
+
+    public static final String RESOURCE_NAME_XPATH = "//*[@class='activity resource']/a/span[1]/text()[1]";
+
+    public static final String RESOURCE_TYPE_XPATH = "/*[@class='activity resource']/a/img/@src/text()[1]";
+
+    public static final String RESOURCE_URL_XPATH = "//*[@class='activity resource']/a/@href/text()[1]";
+
     //*[@id="middle-column"]/div/ul/li[1]/div/div[1]/div/a
-
-    public static final String RESOURCE_URL_XPATH = "//*[@class='activity resource']/li[1]/a/   //*[@class='teachers']/li[1]/a/@href/text()[1]";  // //activity resource
-
 }

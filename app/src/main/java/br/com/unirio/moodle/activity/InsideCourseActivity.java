@@ -32,7 +32,7 @@ import retrofit.client.Response;
 
 public class InsideCourseActivity extends ActionBarActivity {
 
-    @InjectView(R.id.listViewCourses)
+    @InjectView(R.id.listViewCourseResources)
     public ListView mListView;
 
     @Inject
@@ -65,7 +65,6 @@ public class InsideCourseActivity extends ActionBarActivity {
 
         task = new GetCourseInfoTask();
         task.execute();
-
     }
 
     @Override
@@ -101,8 +100,8 @@ public class InsideCourseActivity extends ActionBarActivity {
         protected List<Resource> doInBackground(Void... voids) {
             try {
                 int idIndex = url.lastIndexOf(Constants.ID_NAME);
-                Long courseId = Long.valueOf(url.substring(url.indexOf("=", idIndex) + 1));
-                return processResponse(service.view(courseId));
+                Long resourceId = Long.valueOf(url.substring(url.indexOf("=", idIndex) + 1));
+                return processResponse(service.view(resourceId));
             } catch (Exception e) {
                 Logger.e("Erro obtendo informações do curso", e);
             }
@@ -125,35 +124,40 @@ public class InsideCourseActivity extends ActionBarActivity {
                 Object[] resources_nodes = tagNode.evaluateXPath(Constants.RESOURCE_URL_XPATH);
 
                 if (resources_nodes.length > 0) {
-                    TagNode coursesNode = (TagNode) resources_nodes[0];
+                    TagNode resourcesNode = (TagNode) resources_nodes[0];
 
-                    List<TagNode> childs = coursesNode.getChildTagList();
-                    List<Resource> courses = new ArrayList<Resource>(childs.size());
+                    List<TagNode> childs = resourcesNode.getChildTagList();
+                    List<Resource> resources = new ArrayList<Resource>(childs.size());
 
                     for (TagNode child : childs) {
-                        ///TODO IMPLEMENTAR OS XPATH'S
-                        Object[] resourceNameNode = child.evaluateXPath(Constants.COURSE_NAME_XPATH);
-                        Object[] resourceTypeNode = child.evaluateXPath(Constants.COURSE_NAME_XPATH);
-                        Object[] resourceUrlNode = child.evaluateXPath(Constants.COURSE_NAME_XPATH);
+
+                        ///TODO - IF para pegar a string depois da 'ultima / e antes antes do .XXX! no TYPE_XPATH
+
+                        Object[] resourceNameNode = child.evaluateXPath(Constants.RESOURCE_NAME_XPATH);
+                        Object[] resourceUrlNode = child.evaluateXPath(Constants.RESOURCE_URL_XPATH);
+                        Object[] resourceTypeNode = child.evaluateXPath(Constants.RESOURCE_TYPE_XPATH);
 
 
                         if (resourceNameNode.length > 0) {
 
                             StringBuilder builderResourceName = (StringBuilder) resourceNameNode[0];
-                            StringBuilder builderResourceType = (StringBuilder) resourceNameNode[0];
-                            StringBuilder builderResourceUrl = (StringBuilder) resourceNameNode[0];
+                            StringBuilder builderResourceUrl = (StringBuilder) resourceUrlNode[0];
+                            String builderResourceType = (String) resourceTypeNode[0];
+
+                            builderResourceType.replace("http://uniriodb2.uniriotec.br/pix/f/", "");
+                            builderResourceType.replace(".gif", "");
 
                             String resourceName = builderResourceName.toString();
-                            String resourceType = builderResourceName.toString();
-                            String resourceUrl = builderResourceName.toString();
+                            String resourceType = builderResourceType;
+                            String resourceUrl = builderResourceUrl.toString();
 
-                            Resource course = new Resource(resourceName, resourceUrl, FileType.valueOf(resourceType));
-                            courses.add(course);
+                            Resource resource = new Resource(resourceName, resourceUrl, FileType.valueOf(resourceType));
+                            resources.add(resource);
 
                             Logger.d("resourceName[%s]", resourceName);
                         }
                     }
-                    return courses;
+                    return resources;
                 }
             }
             return new ArrayList<Resource>(0);
