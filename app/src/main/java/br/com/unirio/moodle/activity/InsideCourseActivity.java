@@ -32,7 +32,7 @@ import retrofit.client.Response;
 
 public class InsideCourseActivity extends ActionBarActivity {
 
-    @InjectView(R.id.listViewCourses)
+    @InjectView(R.id.listViewCourseResources)
     public ListView mListView;
 
     @Inject
