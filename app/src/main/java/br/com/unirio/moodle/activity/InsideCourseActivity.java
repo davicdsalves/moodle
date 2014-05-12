@@ -131,12 +131,9 @@ public class InsideCourseActivity extends ActionBarActivity {
 
                     for (TagNode child : childs) {
 
-                        ///TODO - IF para pegar a string depois da 'ultima / e antes antes do .XXX! no TYPE_XPATH
-
                         Object[] resourceNameNode = child.evaluateXPath(Constants.RESOURCE_NAME_XPATH);
                         Object[] resourceUrlNode = child.evaluateXPath(Constants.RESOURCE_URL_XPATH);
                         Object[] resourceTypeNode = child.evaluateXPath(Constants.RESOURCE_TYPE_XPATH);
-
 
                         if (resourceNameNode.length > 0) {
 
